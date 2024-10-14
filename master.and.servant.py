@@ -2,31 +2,34 @@
 
 import random
 
-def servant(datos, urgente=False):
+def doblador(dato, urgente=False):
     """
     acepta control descendente de peticion urgente
     emite control ascendente de buena disposicion (aleatoria)
-    acepta datos descendentes
-    emite datos acendentes
+    acepta dato descendentes
+    emite dato acendentes
     """
     if random.randint(0,1):
         willing = True
     else:
         willing = False
-        print("servant: sin ganas")        
+        print("doblador: sin ganas")        
     if urgente:
-        print("servant: oido urgente")
-        print("servant: done!!")
-    print("servant: recibidos datos: ", datos)
-    answ = ["carne hecha"]   # datos ascendentes
+        print("doblador: oido urgente")
+        print("doblador: done!!")
+    salida = dato*2 # datos ascendentes
+    print(f"doblador: recibido: {dato}; emitido: {salida}")
+    answ = []
+    answ.append(salida)
     answ.append(willing)
-    return answ  # ++ control ascendente
+    return answ  # ¿datos y control?  .. que remedio
 
 def master():
-    # retornos = servant("4 kg de carne")     # peticion de servicio normal
-    retornos = servant("4 kg de carne",True) # peticion de servicio urgente
+    # todo .... 
+    retornos = doblador(4)   # peticion de servicio normal
+    # retornos = doblador(4 ,True) # peticion urgente
     if retornos[1] == False:  ## no tenia ganas,, mas gratitud
-        print("master: thanks to servant!")
+        print("master: thanks to doblador!")
     print("master: recibida: ", retornos[0] )
     return
 
